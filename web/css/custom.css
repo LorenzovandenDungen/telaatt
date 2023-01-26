@@ -1,0 +1,41 @@
+/* GridView */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Table cells */
+.table-id {
+    width: 5%;
+}
+
+.table-name {
+    width: 20%;
+}
+
+.table-class {
+    width: 10%;
+}
+
+.table-minutes-late {
+    width: 10%;
+}
+
+.table-reason {
+    width: 45%;
+}
+
+/* Action column */
+.action-column {
+    width: 10%;
+}
