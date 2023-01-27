@@ -12,11 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'id')->textInput() ?>
+
     <?= $form->field($model, 'naam')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'klas')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'minuten_te_laat')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'minuten_te_laat')->textInput() ?>
 
     <?= $form->field($model, 'reden_te_laat')->textInput(['maxlength' => true]) ?>
 

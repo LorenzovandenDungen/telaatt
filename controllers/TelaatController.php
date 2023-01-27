@@ -40,22 +40,12 @@ class TelaatController extends Controller
     {
         $searchModel = new TelaatSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-    
-        //Calculate statistics
-        $hoogste = Telaat::find()->max('minuten_te_laat');
-        $gemiddelde = Telaat::find()->average('minuten_te_laat');
-        $totaal = Telaat::find()->sum('minuten_te_laat');
-    
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'hoogste' => $hoogste,
-            'gemiddelde' => $gemiddelde,
-            'totaal' => $totaal,
         ]);
     }
-    
-
 
     /**
      * Displays a single Telaat model.

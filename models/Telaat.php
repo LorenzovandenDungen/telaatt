@@ -8,10 +8,10 @@ use Yii;
  * This is the model class for table "telaat".
  *
  * @property int $id
- * @property string $naam
- * @property string $klas
- * @property string $minuten_te_laat
- * @property string $reden_te_laat
+ * @property string|null $naam
+ * @property string|null $klas
+ * @property int|null $minuten_te_laat
+ * @property string|null $reden_te_laat
  */
 class Telaat extends \yii\db\ActiveRecord
 {
@@ -29,8 +29,10 @@ class Telaat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['naam', 'klas', 'minuten_te_laat', 'reden_te_laat'], 'required'],
-            [['naam', 'klas', 'minuten_te_laat', 'reden_te_laat'], 'string', 'max' => 200],
+            [['id'], 'required'],
+            [['id', 'minuten_te_laat'], 'integer'],
+            [['naam', 'klas', 'reden_te_laat'], 'string', 'max' => 255],
+            [['id'], 'unique'],
         ];
     }
 

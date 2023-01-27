@@ -17,8 +17,8 @@ class TelaatSearch extends Telaat
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['naam', 'klas', 'minuten_te_laat', 'reden_te_laat'], 'safe'],
+            [['id', 'minuten_te_laat'], 'integer'],
+            [['naam', 'klas', 'reden_te_laat'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class TelaatSearch extends Telaat
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'minuten_te_laat' => $this->minuten_te_laat,
         ]);
 
         $query->andFilterWhere(['like', 'naam', $this->naam])
             ->andFilterWhere(['like', 'klas', $this->klas])
-            ->andFilterWhere(['like', 'minuten_te_laat', $this->minuten_te_laat])
             ->andFilterWhere(['like', 'reden_te_laat', $this->reden_te_laat]);
 
         return $dataProvider;

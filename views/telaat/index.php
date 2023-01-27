@@ -2,8 +2,6 @@
 
 use app\models\Telaat;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
@@ -21,43 +19,57 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Telaat', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-        [
-            'attribute' => 'id',
-            'label' => 'ID',
-        ],
-        [
-            'attribute' => 'naam',
-            'label' => 'Naam',
-        ],
-        [
-            'attribute' => 'klas',
-            'label' => 'Klas',
-        ],
-        [
-            'attribute' => 'minuten_te_laat',
-            'label' => 'Minuten te laat',
-        ],
-        [
-            'attribute' => 'reden_te_laat',
-            'label' => 'Reden te laat',
-        ],
-        [
-            'class' => ActionColumn::className(),
-            'urlCreator' => function ($action, Telaat $model, $key, $index, $column) {
-                return Url::toRoute([$action, 'id' => $model->id]);
-            }
-        ],
-    ],
-]); ?>
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
+            'naam',
+            'klas',
+            'minuten_te_laat',
+            'reden_te_laat',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                    'title' => Yii::t('app', 'view'),
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                    'title' => Yii::t('app', 'update'),
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                                    'title' => Yii::t('app', 'delete'),
+                                    'data' => [
+                                        'confirm' => 'Are you sure you want to delete this item?',
+                                        'method' => 'post',
+                                    ],
+                        ]);
+                    }
+                ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        $url = 'view?id=' . $model->id;
+                        return $url;
+                    }
+                    if ($action === 'update') {
+                        $url = 'update?id=' . $model->id;
+                        return $url;
+                    }
+                    if ($action === 'delete') {
+                        $url = 'delete?id=' . $model->id;
+                        return $url;
+                    }
+                }
+            ],
+        ],
+    ]); ?>
 
 
 </div>
-
