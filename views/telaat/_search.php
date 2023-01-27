@@ -21,9 +21,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'klas') ?>
 
-    <?= $form->field($model, 'minuten_te_laat') ?>
+    <?= $form->field($model, 'minuten') ?>
 
-    <?= $form->field($model, 'reden_te_laat') ?>
+    <?= $form->field($model, 'reden') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

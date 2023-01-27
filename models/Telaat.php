@@ -10,8 +10,8 @@ use Yii;
  * @property int $id
  * @property string|null $naam
  * @property string|null $klas
- * @property int|null $minuten_te_laat
- * @property string|null $reden_te_laat
+ * @property int|null $minuten
+ * @property string|null $reden
  */
 class Telaat extends \yii\db\ActiveRecord
 {
@@ -30,8 +30,8 @@ class Telaat extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'minuten_te_laat'], 'integer'],
-            [['naam', 'klas', 'reden_te_laat'], 'string', 'max' => 255],
+            [['id', 'minuten'], 'integer'],
+            [['naam', 'klas', 'reden'], 'string', 'max' => 255],
             [['id'], 'unique'],
         ];
     }
@@ -45,8 +45,8 @@ class Telaat extends \yii\db\ActiveRecord
             'id' => 'ID',
             'naam' => 'Naam',
             'klas' => 'Klas',
-            'minuten_te_laat' => 'Minuten Te Laat',
-            'reden_te_laat' => 'Reden Te Laat',
+            'minuten' => 'Minuten',
+            'reden' => 'Reden',
         ];
     }
 }

@@ -18,9 +18,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'klas')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'minuten_te_laat')->textInput() ?>
+    <?= $form->field($model, 'minuten')->textInput() ?>
 
-    <?= $form->field($model, 'reden_te_laat')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'reden')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
