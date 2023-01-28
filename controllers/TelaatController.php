@@ -39,18 +39,11 @@ class TelaatController extends Controller
     public function actionIndex()
     {
         $searchModel = new TelaatSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        $hoogste = Telaat::find()->max('minuten');
-        $gemiddelde = Telaat::find()->average('bedrag');
-        $totaal = Telaat::find()->sum('bedrag');
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'hoogste' => $hoogste,
-            'gemiddelde' => $gemiddelde,
-            'totaal' => $totaal,
         ]);
     }
 

@@ -13,6 +13,8 @@ use yii\grid\GridView;
 $this->title = 'Telaats';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <div class="telaat-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -45,3 +47,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
